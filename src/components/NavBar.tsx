@@ -22,8 +22,8 @@ import {
 import { ChevronDown } from "lucide-react";
 
 // Instalowane:react-dialog/ sheet/ react-slot/ button/ react-dropdown-menu/ dropdown=menu/
-// Cala strona w kontener
 // Karuzela zdjec bez przyciskow automatycznie niech nie wchodzi na navbara tekst nad zdjeciem
+
 export default function NavBar() {
   return (
     <>
@@ -33,59 +33,63 @@ export default function NavBar() {
 }
 function DesktopNavBar() {
   return (
-    <div
-      className={
-        "flex items-center justify-between p-5 border-b-2 border-black shadow-sm"
-      }
-    >
-      <div>
-        <Logo homePageLink={true} />
-      </div>
-      <div className={"hidden lg:flex gap-6 items-center"}>
-        <Link href={"/"}>Home</Link>
-        <Link href={"/gallery"}>Gallery</Link>
-        <DropdownMenu>
-          <DropdownMenuTrigger className="flex items-center">
-            About <ChevronDown className="ml-1 h-4 w-4" />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuItem>
-              <Link href={"/about/our-company"}>Our Company</Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <Link href={"/about/partnership"}>Partnership</Link>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-        <Link href={"/contact"}>Contact</Link>
-      </div>
-      <Sheet>
-        <SheetTrigger asChild className="lg:hidden">
-          <Button variant="ghost" size="lg" className="p-2">
-            <Menu className="h-8 w-8" />
-          </Button>
-        </SheetTrigger>
-        <SheetContent>
-          <div className="flex flex-col gap-4 mt-8">
-            <Link href="/">Home</Link>
-            <Link href="/gallery">Gallery</Link>
-            <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center">
-                About <ChevronDown className="ml-1 h-4 w-4" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem>
-                  <Link href={"/about/our-company"}>Our Company</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href={"/about/who-we-work-with"}>Who We Work With</Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-            <Link href="/contact">Contact</Link>
+    <div className="container mx-auto">
+      <div
+        className={
+          "flex items-center justify-between p-5 border-b-2 border-black shadow-sm"
+        }
+      >
+        <div>
+          <Logo homePageLink={true} />
+        </div>
+        <div className={"hidden lg:flex gap-6 items-center"}>
+          <Link href={"/"}>Home</Link>
+          <Link href={"/gallery"}>Gallery</Link>
+          <div className="relative group">
+            <span className="cursor-pointer">About</span>
+            <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+              <Link
+                href="/about/our-company"
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              >
+                Our Company
+              </Link>
+              <Link
+                href="/about/partnership"
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              >
+                Partnership
+              </Link>
+            </div>
           </div>
-        </SheetContent>
-      </Sheet>
+          <Link href={"/contact"}>Contact</Link>
+        </div>
+        <Sheet>
+          <SheetTrigger asChild className="lg:hidden">
+            <Button variant="ghost" size="lg" className="p-2">
+              <Menu className="h-8 w-8" />
+            </Button>
+          </SheetTrigger>
+          <SheetContent>
+            <div className="flex flex-col gap-4 mt-8">
+              <Link href="/">Home</Link>
+              <Link href="/gallery">Gallery</Link>
+              <Link href="/contact">Contact</Link>
+              <div className="relative group">
+                <span className="cursor-pointer">About</span>
+                <div className="mt-2 space-y-2 hidden group-hover:block">
+                  <Link href="/about/our-company" className="block">
+                    Our Company
+                  </Link>
+                  <Link href="/about/who-we-work-with" className="block">
+                    Who We Work With
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </SheetContent>
+        </Sheet>
+      </div>
     </div>
   );
 }
