@@ -38,7 +38,7 @@ function DesktopNavBar({ styleDlaDesktop }: { styleDlaDesktop: string }) {
             <div
                 className={cn(styleDlaDesktop, "items-center justify-between p-5 border-b-2 border-black shadow-sm")}>
                 <div>
-                    <Logo homePageLink={true} />
+                    <Logo homePageLink={true} mobileLogo={false} />
                 </div>
 
                 <div className={"flex gap-6 items-center flex-row"}>
@@ -71,7 +71,7 @@ function DesktopNavBar({ styleDlaDesktop }: { styleDlaDesktop: string }) {
 function MobileNavBar({ styleDlaMobile }: { styleDlaMobile: string }) {
     return (
         <div className={cn(styleDlaMobile, "w-full justify-between p-5 border-b-2 border-black")} >
-                <Logo homePageLink={true} />
+                <Logo homePageLink={true} mobileLogo={true} />
                 <Sheet >
                     <SheetTrigger asChild className="">
                         <Button variant="ghost" size="lg" className="p-2">

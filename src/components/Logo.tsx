@@ -1,14 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Logo({homePageLink}: {
+export default function Logo({homePageLink, mobileLogo}: {
     homePageLink?: boolean
+    mobileLogo?: boolean
 }) {
     return (
         <>
             {homePageLink ? (
                 <Link href={"/"}>
-                    <ImagePart/>
+                    <ImagePart mobileLogo={mobileLogo}/>
                 </Link>
             ) : (
                 <ImagePart/>
@@ -17,14 +18,15 @@ export default function Logo({homePageLink}: {
     )
 }
 
-function ImagePart() {
+function ImagePart({mobileLogo}: {mobileLogo?: boolean}) {
+    
     return (
         <Image
             className="dark:invert"
             src="/logobig.png"
             alt="Next.js logo"
-            width={270}
-            height={80}
+            width={mobileLogo? 150:270}
+            height={mobileLogo ? 50:80}
         />
     )
 }
