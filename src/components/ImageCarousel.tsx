@@ -1,34 +1,62 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
-const ImageCarousel: React.FC = () => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const images = [
-    { src: "/logobig.png", text: "Halo" },
-    { src: "/logobig.png", text: "Witam" },
-    { src: "/image3.png", text: "Cześć" },
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, []);
+export default function ImageCarousel() {
 
   return (
-    <div className="relative mt-16">
-      <img
-        src={images[currentImageIndex].src}
-        alt={`Slide ${currentImageIndex + 1}`}
-        className="w-full h-auto"
-      />
-      <div className="absolute top-0 left-0 right-0 bg-black bg-opacity-50 text-white p-4">
-        {images[currentImageIndex].text}
-      </div>
-    </div>
+    <Carousel className="w-full max-w-4xl mx-auto">
+      <CarouselContent>
+        <CarouselItem>
+          <div className="relative h-[400px] w-full">
+            <Image
+              src="/logobig.png"
+              alt="Pierwsze zdjęcie"
+              fill
+              className="object-contain rounded-lg"
+            />
+            <div className="absolute bottom-0 w-full bg-black/50 p-4 text-white rounded-b-lg">
+              <h3>Siema!</h3>
+            </div>
+          </div>
+        </CarouselItem>
+        <CarouselItem>
+          <div className="relative h-[400px] w-full">
+            <Image
+              src="/logobig.png"
+              alt="Drugie zdjęcie"
+              fill
+              className="object-contain rounded-lg"
+            />
+            <div className="absolute bottom-0 w-full bg-black/50 p-4 text-white rounded-b-lg">
+              <h3>Yohohoh</h3>
+            </div>
+          </div>
+        </CarouselItem>
+        <CarouselItem>
+          <div className="relative h-[400px] w-full">
+            <Image
+              src="/logobig.png"
+              alt="Trzecie zdjęcie"
+              fill
+              className="object-contain rounded-lg"
+            />
+            <div className="absolute bottom-0 w-full bg-black/50 p-4 text-white rounded-b-lg">
+              <h3>Papapa</h3>
+            </div>
+          </div>
+        </CarouselItem>
+      </CarouselContent>
+      <CarouselPrevious/>
+      <CarouselNext />
+    </Carousel>
   );
-};
-
-export default ImageCarousel;
+}
