@@ -22,7 +22,6 @@ import {
 import { ChevronDown } from "lucide-react";
 
 // Instalowane:react-dialog/ sheet/ react-slot/ button/ react-dropdown-menu/ dropdown=menu/
-// Karuzela zdjec bez przyciskow automatycznie niech nie wchodzi na navbara tekst nad zdjeciem
 
 export default function NavBar() {
   return (
@@ -64,35 +63,36 @@ function DesktopNavBar() {
           </div>
           <Link href={"/contact"}>Contact</Link>
         </div>
-        <Sheet>
-          <SheetTrigger asChild className="lg:hidden">
-            <Button variant="ghost" size="lg" className="p-2">
-              <Menu className="h-8 w-8" />
-            </Button>
-          </SheetTrigger>
-          <SheetContent>
-            <div className="flex flex-col gap-4 mt-8">
-              <Link href="/">Home</Link>
-              <Link href="/gallery">Gallery</Link>
-              <Link href="/contact">Contact</Link>
-              <div className="relative group">
-                <span className="cursor-pointer">About</span>
-                <div className="mt-2 space-y-2 hidden group-hover:block">
-                  <Link href="/about/our-company" className="block">
-                    Our Company
-                  </Link>
-                  <Link href="/about/who-we-work-with" className="block">
-                    Who We Work With
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </SheetContent>
-        </Sheet>
       </div>
     </div>
   );
 }
 function MobileNavBar() {
-  return <></>;
+  return (
+    <Sheet>
+      <SheetTrigger asChild className="lg:hidden">
+        <Button variant="ghost" size="lg" className="p-2">
+          <Menu className="h-8 w-8" />
+        </Button>
+      </SheetTrigger>
+      <SheetContent>
+        <div className="flex flex-col gap-4 mt-8">
+          <Link href="/">Home</Link>
+          <Link href="/gallery">Gallery</Link>
+          <Link href="/contact">Contact</Link>
+          <div className="relative group">
+            <span className="cursor-pointer">About</span>
+            <div className="mt-2 space-y-2 hidden group-hover:block">
+              <Link href="/about/our-company" className="block">
+                Our Company
+              </Link>
+              <Link href="/about/who-we-work-with" className="block">
+                Who We Work With
+              </Link>
+            </div>
+          </div>
+        </div>
+      </SheetContent>
+    </Sheet>
+  );
 }
