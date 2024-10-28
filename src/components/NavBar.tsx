@@ -22,7 +22,6 @@ import {
 import { ChevronDown } from "lucide-react";
 
 // Instalowane:react-dialog/ sheet/ react-slot/ button/ react-dropdown-menu/ dropdown=menu/
-// Karuzela zdjec bez przyciskow automatycznie niech nie wchodzi na navbara tekst nad zdjeciem
 
 export default function NavBar() {
     return (
