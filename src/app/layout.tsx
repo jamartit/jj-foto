@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
-
+import ImageCarousel from '@/components/ImageCarousel';
 const geistSans = localFont({
     src: "./fonts/GeistVF.woff",
     variable: "--font-geist-sans",
@@ -28,6 +28,7 @@ export default function RootLayout({children}: Readonly<{
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <main className="flex flex-col min-h-screen ">
             <NavBar />
+            <ImageCarousel />
             <div className={"mb-auto"}>{children}</div>
             <Footer />
         </main>
