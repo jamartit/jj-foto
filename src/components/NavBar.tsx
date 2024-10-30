@@ -1,3 +1,4 @@
+"use client";
 import Logo from "@/components/Logo";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -20,8 +21,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
-// karuzela menu sie chowa po kliknięciu na kliknecie about w mobilkach
-// Instalowane:react-dialog/ sheet/ react-slot/ button/ react-dropdown-menu/ dropdown=menu/ embla-carousel-react
+import { useState } from "react";
 
 export default function NavBar() {
   return (
@@ -31,7 +31,7 @@ export default function NavBar() {
     </>
   );
 }
-
+// ImageWithText component tekst prawa strona ze zdjeciem po lewej i wyswietla  pod na mobile i ma miec boolean zeby jak cos to byl po prawej| 
 function DesktopNavBar({ styleDlaDesktop }: { styleDlaDesktop: string }) {
   return (
     <div className={cn("container mx-auto")}>
@@ -72,6 +72,7 @@ function DesktopNavBar({ styleDlaDesktop }: { styleDlaDesktop: string }) {
   );
 }
 function MobileNavBar({ styleDlaMobile }: { styleDlaMobile: string }) {
+  const [open, setOpen] = useState(false);
   return (
     <div
       className={cn(
@@ -80,22 +81,25 @@ function MobileNavBar({ styleDlaMobile }: { styleDlaMobile: string }) {
       )}
     >
       <Logo homePageLink={true} mobileLogo={true} />
-      <Sheet>
+      <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger asChild className="">
           <Button variant="ghost" size="lg" className="p-2">
             <Menu className="h-8 w-8" />
           </Button>
         </SheetTrigger>
         <SheetContent>
+          <SheetHeader>
+            <SheetTitle>Menu</SheetTitle>
+          </SheetHeader>
           <div className="flex flex-col gap-4 mt-8">
-            <Link href="/">
-              <SheetTrigger className="w-full text-left">Home</SheetTrigger>
+            <Link href="/" onClick={() => setOpen(false)}>
+              Home
             </Link>
-            <Link href="/gallery">
-              <SheetTrigger className="w-full text-left">Gallery</SheetTrigger>
+            <Link href="/gallery" onClick={() => setOpen(false)}>
+              Gallery
             </Link>
-            <Link href="/contact">
-              <SheetTrigger className="w-full text-left">Contact</SheetTrigger>
+            <Link href="/contact" onClick={() => setOpen(false)}>
+              Contact
             </Link>
             <div className="relative group">
               <DropdownMenu>
@@ -104,17 +108,19 @@ function MobileNavBar({ styleDlaMobile }: { styleDlaMobile: string }) {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
                   <DropdownMenuItem asChild>
-                    <Link href="/about/our-company">
-                      <SheetTrigger className="w-full text-left">
-                        Our Company
-                      </SheetTrigger>
+                    <Link
+                      href="/about/our-company"
+                      onClick={() => setOpen(false)}
+                    >
+                      Our Company
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href="/about/partnership">
-                      <SheetTrigger className="w-full text-left">
-                        Partnership
-                      </SheetTrigger>
+                    <Link
+                      href="/about/partnership"
+                      onClick={() => setOpen(false)}
+                    >
+                      Partnership
                     </Link>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
