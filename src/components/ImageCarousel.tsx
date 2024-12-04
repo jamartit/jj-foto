@@ -1,5 +1,4 @@
 "use client";
-import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import {
   Carousel,
@@ -8,7 +7,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
 
 export default function ImageCarousel() {
 
