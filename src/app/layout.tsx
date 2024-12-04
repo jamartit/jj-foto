@@ -26,12 +26,7 @@ export default function RootLayout({children}: Readonly<{
     return (
         <html lang="pl">
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <main className="flex flex-col min-h-screen ">
-            <NavBar />
-            <ImageCarousel />
-            <div className={"mb-auto"}>{children}</div>
-            <Footer />
-        </main>
+            {children}
         </body>
         </html>
     );
